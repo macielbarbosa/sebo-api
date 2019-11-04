@@ -1,1 +1,0 @@
-export { validar } from './validar'

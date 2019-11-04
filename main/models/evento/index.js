@@ -1,5 +1,0 @@
-export { registrarCriacao } from './registrarCriacao'
-export { registrarAtualizacao } from './registrarAtualizacao'
-export { registrarExclusao } from './registrarExclusao'
-export { metodosParaDesativar } from './metodosParaDesativar'
-export * from './tiposModelos'

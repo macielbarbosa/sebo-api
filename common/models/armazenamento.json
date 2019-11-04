@@ -34,7 +34,7 @@
     {
       "accessType": "EXECUTE",
       "principalType": "ROLE",
-      "principalId": "docente",
+      "principalId": "$everyone",
       "permission": "ALLOW",
       "property": "upload"
     },

@@ -1,5 +1,0 @@
-export { download } from './download'
-export { receberMensagemImpressao } from './receberMensagemImpressao'
-export { metodosParaDesativar } from './metodosParaDesativar'
-export { criarImpressao } from './criarImpressao'
-export { enviarFilaImpressao } from './enviarFilaImpressao'

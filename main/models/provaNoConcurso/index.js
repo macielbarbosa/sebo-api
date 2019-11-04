@@ -1,5 +1,0 @@
-export { processarQuestaoIdsDeProvaDoConcurso } from './processarQuestaoIdsDeProvaDoConcurso'
-export { adicionarQuestoesListagem } from './adicionarQuestoesListagem'
-export { adicionarQuestoesIndividual } from './adicionarQuestoesIndividual'
-export { isProvaAssociada } from './isProvaAssociada'
-export { excluirAssociacoesQuestao } from './excluirAssociacoesQuestao'

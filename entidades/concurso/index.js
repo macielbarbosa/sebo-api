@@ -1,1 +1,0 @@
-export { concurso } from './concurso'
