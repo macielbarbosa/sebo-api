@@ -1,0 +1,16 @@
+{
+  "dataCadastro": "2018-09-27T12:35:00.180Z",
+  "dataUltimaAlteracao": "2018-09-27T12:35:00.180Z",
+  "enunciado": "enunciado",
+  "redacao": {
+    "tema": "tema",
+    "instrucoes": "instruções",
+    "numeroDeLinhas": 10,
+    "expectativaDeResposta": "expectativa de resposta"
+  },
+  "dificuldade": 1,
+  "tipo": "redacao",
+  "status": { "id": "el", "texto": "Em elaboração" },
+  "anoEscolar": "Ensino superior: basico",
+  "publico": false
+}

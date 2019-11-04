@@ -1,0 +1,305 @@
+{
+  "name": "Questao",
+  "plural": "questoes",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "remoting": {
+    "normalizeHttpPath": true
+  },
+  "mixins": {
+    "SoftDelete": true,
+    "Lixeira": true
+  },
+  "properties": {
+    "id": {
+      "type": "string",
+      "id": true,
+      "defaultFn": "uuidv4"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "usuario": {
+      "type": "belongsTo",
+      "model": "Usuario",
+      "foreignKey": "usuarioId"
+    },
+    "tags": {
+      "type": "referencesMany",
+      "model": "Tag",
+      "foreignKey": "tagIds"
+    }
+  },
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "DENY"
+    },
+    {
+      "accessType": "READ",
+      "principalType": "ROLE",
+      "principalId": "super",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "WRITE",
+      "principalType": "ROLE",
+      "principalId": "super",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "READ",
+      "principalType": "ROLE",
+      "principalId": "$owner",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "WRITE",
+      "principalType": "ROLE",
+      "principalId": "$owner",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "docente",
+      "permission": "ALLOW",
+      "property": "create"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "docente",
+      "permission": "ALLOW",
+      "property": "preview"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "docente",
+      "permission": "ALLOW",
+      "property": "selecaoAutomatica"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "docente",
+      "permission": "ALLOW",
+      "property": "elaboradores"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "docente",
+      "permission": "ALLOW",
+      "property": "compartilhar"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "docente",
+      "permission": "ALLOW",
+      "property": "questoesPublicas"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "docente",
+      "permission": "ALLOW",
+      "property": "copiar"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "docente",
+      "permission": "ALLOW",
+      "property": "countQuestoesPublicas"
+    }
+  ],
+  "methods": {
+    "preview": {
+      "accepts": [
+        {
+          "arg": "dados",
+          "type": "object",
+          "http": {
+            "source": "body"
+          }
+        },
+        {
+          "arg": "options",
+          "type": "object",
+          "http": "optionsFromRequest"
+        }
+      ],
+      "returns": [
+        {
+          "arg": "status",
+          "type": "string"
+        },
+        {
+          "arg": "impressaoId",
+          "type": "string"
+        }
+      ],
+      "description": "Envia dados de uma questão para gerar uma preview.",
+      "http": {
+        "verb": "post",
+        "path": "/preview"
+      }
+    },
+    "selecaoAutomatica": {
+      "accepts": [
+        {
+          "arg": "quantidadeDeQuestoes",
+          "type": "number",
+          "required": true,
+          "http": {
+            "source": "query"
+          }
+        },
+        {
+          "arg": "dificuldade",
+          "type": "number",
+          "http": {
+            "source": "query"
+          }
+        },
+        {
+          "arg": "anoEscolar",
+          "type": "string",
+          "http": {
+            "source": "query"
+          }
+        },
+        {
+          "arg": "tipo",
+          "type": "string",
+          "http": {
+            "source": "query"
+          }
+        },
+        {
+          "arg": "questoesSelecionadas",
+          "type": "array",
+          "http": {
+            "source": "query"
+          }
+        },
+        {
+          "arg": "options",
+          "type": "object",
+          "http": "optionsFromRequest"
+        }
+      ],
+      "returns": {
+        "arg": "questoes",
+        "type": "array",
+        "root": true
+      },
+      "description": "Seleciona automaticamente questões para inserir na prova.",
+      "http": {
+        "verb": "get",
+        "path": "/selecao-automatica"
+      }
+    },
+    "elaboradores": {
+      "returns": [
+        {
+          "type": "array",
+          "root": true
+        }
+      ],
+      "description": "Retorna uma lista (array) com todos os eleboradores.",
+      "http": {
+        "verb": "GET",
+        "path": "/elaboradores/"
+      }
+    },
+    "prototype.compartilhar": {
+      "accepts": [
+        {
+          "arg": "instancia",
+          "type": "object"
+        },
+        {
+          "arg": "destinatarioId",
+          "type": "string",
+          "required": true
+        }
+      ],
+      "returns": [
+        {
+          "arg": "questaoCedida",
+          "type": "object"
+        }
+      ],
+      "description": "Compartilhar a questão com {{destinatarioId}}.",
+      "http": {
+        "verb": "get",
+        "path": "/compartilhar"
+      }
+    },
+    "prototype.copiar": {
+      "accepts": [
+        {
+          "arg": "instancia",
+          "type": "object"
+        },
+        {
+          "arg": "options",
+          "type": "object",
+          "http": "optionsFromRequest"
+        }
+      ],
+      "returns": [
+        {
+          "arg": "data",
+          "type": "object"
+        }
+      ],
+      "description": "Copia a questão pública para si.",
+      "http": {
+        "verb": "get",
+        "path": "/copiar"
+      }
+    },
+    "questoesPublicas": {
+      "accepts": [
+        {
+          "arg": "filter",
+          "type": "object"
+        }
+      ],
+      "returns": {
+        "arg": "data",
+        "type": [
+          "Questao"
+        ],
+        "root": true
+      },
+      "description": "Retorna uma lista (array) com todas as questões públicas.",
+      "http": {
+        "verb": "get",
+        "path": "/questoes-publicas"
+      }
+    },
+    "countQuestoesPublicas": {
+      "accepts": [],
+      "returns": {
+        "arg": "count",
+        "type": "number"
+      },
+      "description": "Retorna quantidade de questões públicas",
+      "http": {
+        "verb": "get",
+        "path": "/questoes-publicas/count"
+      }
+    }
+  }
+}

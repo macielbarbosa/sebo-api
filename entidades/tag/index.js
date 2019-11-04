@@ -1,0 +1,1 @@
+export { contratoTagsVirtuais } from './contratoTagsVirtuais'

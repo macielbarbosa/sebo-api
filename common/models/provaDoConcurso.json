@@ -1,0 +1,30 @@
+{
+  "name": "ProvaDoConcurso",
+  "plural": "provasDoConcurso",
+  "base": "Model",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "remoting": {
+    "normalizeHttpPath": true
+  },
+  "mixins": {},
+  "properties": {
+    "id": {
+      "type": "string",
+      "id": true,
+      "defaultFn": "uuidv4"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "tags": {
+      "type": "referencesMany",
+      "model": "Tag",
+      "foreignKey": "tagIds"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

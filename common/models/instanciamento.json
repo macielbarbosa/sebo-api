@@ -1,0 +1,424 @@
+{
+  "name": "Instanciamento",
+  "plural": "instanciamentos",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "remoting": {
+    "normalizeHttpPath": true
+  },
+  "mixins": {
+    "SoftDelete": true,
+    "MessageQueue": {
+      "consumers": {
+        "receberMensagemInstanciamento": {
+          "queue": "response-created-instances",
+          "type": "response-created-instances"
+        }
+      },
+      "producers": {
+        "enviarFilaInstanciamento": {
+          "exchange": "ex-request-created-instances",
+          "options": {
+            "routingKey": "request-created-instances",
+            "type": "company.project.messages.textMessage",
+            "contentType": "application/json"
+          }
+        }
+      }
+    },
+    "MockRabbit": true
+  },
+  "properties": {
+    "id": {
+      "type": "string",
+      "id": true,
+      "defaultFn": "uuidv4"
+    },
+    "dataCadastro": {
+      "type": "date",
+      "required": true
+    },
+    "candidatoId": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "tipoAplicacao": {
+      "type": "string"
+    },
+    "virtual": {
+      "type": "object"
+    },
+    "papel": {
+      "type": "object"
+    },
+    "tipo": {
+      "type": "string"
+    },
+    "idMatriz": {
+      "type": "string"
+    },
+    "prova": {
+      "type": "object"
+    },
+    "caderno": {
+      "type": "object"
+    },
+    "notasPublicadas": {
+      "type": "boolean"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "usuario": {
+      "type": "belongsTo",
+      "model": "Usuario",
+      "foreignKey": "usuarioId"
+    },
+    "candidato": {
+      "type": "belongsTo",
+      "model": "Usuario",
+      "foreignKey": "candidatoId"
+    }
+  },
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "DENY"
+    },
+    {
+      "accessType": "READ",
+      "principalType": "ROLE",
+      "principalId": "super",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "WRITE",
+      "principalType": "ROLE",
+      "principalId": "super",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "READ",
+      "principalType": "ROLE",
+      "principalId": "$owner",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "WRITE",
+      "principalType": "ROLE",
+      "principalId": "$owner",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$owner",
+      "permission": "ALLOW",
+      "property": "imprimirInstancias"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$owner",
+      "permission": "ALLOW",
+      "property": "imprimir"
+    },
+    {
+      "accessType": "READ",
+      "principalType": "ROLE",
+      "principalId": "$candidatoEoMesmoDoArgumento",
+      "permission": "ALLOW",
+      "property": "byCandidato"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "docente",
+      "permission": "ALLOW",
+      "property": "byMatriz"
+    },
+    {
+      "accessType": "READ",
+      "principalType": "ROLE",
+      "principalId": "$candidatoEoMesmoDoArgumento",
+      "permission": "ALLOW",
+      "property": "byCandidatoContagem"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$candidatoPodeResponder",
+      "permission": "ALLOW",
+      "property": "salvarResposta"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$candidatoPodeResponder",
+      "permission": "ALLOW",
+      "property": "iniciarResolucao"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$candidatoPodeResponder",
+      "permission": "ALLOW",
+      "property": "finalizarResolucao"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$candidatoPodeResponder",
+      "permission": "ALLOW",
+      "property": "obterInstanciaSemGabarito"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "docente",
+      "permission": "ALLOW",
+      "property": "correcao"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$pertenceAoCandidato",
+      "permission": "ALLOW",
+      "property": "vistaDeProva"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$pertenceAoCandidato",
+      "permission": "ALLOW",
+      "property": "estaNoIntervaloDeAplicacao"
+    }
+  ],
+  "methods": {
+    "byCandidato": {
+      "accepts": {
+        "arg": "candidatoId",
+        "type": "string",
+        "required": true
+      },
+      "returns": [
+        {
+          "type": "array",
+          "root": true
+        }
+      ],
+      "description": "Obtém as instâncias pronta para aplicação do candidato",
+      "http": {
+        "verb": "GET"
+      }
+    },
+    "byMatriz": {
+      "accepts": [
+        {
+          "arg": "idMatriz",
+          "type": "string",
+          "http": {
+            "source": "query"
+          },
+          "required": true,
+          "description": "Id da prova matriz (prova que gerou os instanciamentos)"
+        },
+        {
+          "arg": "options",
+          "type": "object",
+          "http": "optionsFromRequest"
+        }
+      ],
+      "returns": {
+        "arg": "instancias",
+        "root": true,
+        "type": "array"
+      },
+      "description": "Retorna todos os instanciamentos do usuario autenticado que foram gerados pela prova matriz de id idMatriz",
+      "http": {
+        "verb": "get",
+        "path": "/by-matriz"
+      }
+    },
+    "byCandidatoContagem": {
+      "accepts": {
+        "arg": "candidatoId",
+        "type": "string",
+        "required": true
+      },
+      "returns": [
+        {
+          "type": "number",
+          "arg": "count"
+        }
+      ],
+      "description": "Obtém o total de instâncias pronta para aplicação do candidato",
+      "http": {
+        "verb": "GET",
+        "path": "/by-candidato/count"
+      }
+    },
+    "imprimirInstancias": {
+      "accepts": [
+        {
+          "arg": "id",
+          "type": "string"
+        },
+        {
+          "arg": "dados",
+          "type": "object",
+          "http": {
+            "source": "body"
+          }
+        }
+      ],
+      "returns": [
+        {
+          "arg": "status",
+          "type": "string"
+        },
+        {
+          "arg": "impressaoId",
+          "type": "string"
+        },
+        {
+          "arg": "titulo",
+          "type": "string"
+        }
+      ],
+      "description": "Envia instancias da prova com {id} para fila de impressão",
+      "http": {
+        "verb": "post",
+        "path": "/imprimir-instancias/:id"
+      }
+    },
+    "prototype.salvarResposta": {
+      "accepts": [
+        {
+          "arg": "instancia",
+          "type": "object"
+        },
+        {
+          "arg": "resposta",
+          "type": "object",
+          "http": {
+            "source": "body"
+          }
+        }
+      ],
+      "returns": {
+        "arg": "confirmacao",
+        "type": "object"
+      },
+      "description": "Salvar resposta da instancia {id}",
+      "http": {
+        "verb": "put",
+        "path": "/salvar-resposta"
+      }
+    },
+    "prototype.iniciarResolucao": {
+      "accepts": {
+        "arg": "instancia",
+        "type": "object"
+      },
+      "returns": {
+        "arg": "confirmacao",
+        "type": "object"
+      },
+      "description": "Gravar instante do inicio da resolução da instancia {id}",
+      "http": {
+        "verb": "get",
+        "path": "/iniciar-resolucao"
+      }
+    },
+    "prototype.finalizarResolucao": {
+      "accepts": {
+        "arg": "instancia",
+        "type": "object"
+      },
+      "returns": {
+        "arg": "confirmacao",
+        "type": "object"
+      },
+      "description": "Gravar instante da finalização da resolução da instancia {id}",
+      "http": {
+        "verb": "get",
+        "path": "/finalizar-resolucao"
+      }
+    },
+    "prototype.obterInstanciaSemGabarito": {
+      "accepts": {
+        "arg": "instancia",
+        "type": "object"
+      },
+      "returns": {
+        "arg": "data",
+        "type": "object"
+      },
+      "description": "Obtém os dados da instância sem o gabarito da prova.",
+      "http": {
+        "verb": "get",
+        "path": "/obter-instancia-sem-gabarito"
+      }
+    },
+    "prototype.correcao": {
+      "accepts": [
+        {
+          "arg": "instancia",
+          "type": "object"
+        },
+        {
+          "arg": "idQuestao",
+          "type": "string",
+          "http": {
+            "source": "path"
+          }
+        },
+        {
+          "arg": "data",
+          "type": "object"
+        }
+      ],
+      "returns": {
+        "arg": "data",
+        "type": "object"
+      },
+      "description": "Salvar correcao",
+      "http": {
+        "verb": "post",
+        "path": "/correcao/:idQuestao"
+      }
+    },
+    "prototype.vistaDeProva": {
+      "returns": {
+        "arg": "instancia",
+        "root": true,
+        "type": "object"
+      },
+      "description": "Retorna a instancia no formato apropiado de vista de prova",
+      "http": {
+        "errorStatus": "403",
+        "verb": "get"
+      }
+    },
+    "prototype.estaNoIntervaloDeAplicacao": {
+      "returns": {
+        "arg": "data",
+        "root": true,
+        "type": "boolean"
+      },
+      "description": "Retorna true caso a instância esteja no intervalo de aplicação, false caso contrário.",
+      "http": {
+        "errorStatus": "403",
+        "verb": "get"
+      }
+    }
+  }
+}

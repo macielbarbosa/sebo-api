@@ -1,0 +1,1 @@
+export { validacaoSemanticaQuestao } from './validacaoSemanticaQuestao'

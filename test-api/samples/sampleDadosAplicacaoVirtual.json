@@ -1,0 +1,33 @@
+{
+  "tipoAplicacao": "virtual",
+  "virtual": {
+    "duracaoDaProva": 1,
+    "dataInicioProva": "2018-10-23T19:02:58.366Z",
+    "dataTerminoProva": "2018-10-23T19:02:58.366Z"
+  },
+  "participantes": [
+    {
+      "id": "dac94fee-6fb5-4dd6-973b-fc8720b92bed",
+      "email": "discente_um@ufrn.br",
+      "nome": "discente_um",
+      "matricula": 5966
+    },
+    {
+      "id": "df9536b9-95a6-408c-9273-320cd322441f",
+      "email": "discente_dois@ufrn.br",
+      "nome": "discente_dois",
+      "matricula": 2010
+    },
+    {
+      "id": "eae8c59c-506e-4738-9b9e-bc5db9a37f90",
+      "email": "discente_tres@ufrn.ufrn",
+      "nome": "discente_tres",
+      "matricula": 5555
+    }
+  ],
+  "grupos": [
+    {
+      "questoes": []
+    }
+  ]
+}

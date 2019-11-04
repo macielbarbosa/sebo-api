@@ -1,0 +1,63 @@
+{
+  "name": "Evento",
+  "plural": "eventos",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "remoting": {
+    "normalizeHttpPath": true
+  },
+  "mixins": {
+    "SoftDelete": true
+  },
+  "properties": {
+    "id": {
+      "type": "string",
+      "id": true,
+      "defaultFn": "uuidv4"
+    },
+    "tipoEvento": {
+      "type": "string",
+      "required": true
+    },
+    "tipoModelo": {
+      "type": "string",
+      "required": true
+    },
+    "instancia": {
+      "type": "object",
+      "required": true
+    },
+    "username": {
+      "type": "string",
+      "required": true
+    },
+    "conexao": {
+      "type": "string",
+      "required": true
+    },
+    "data": {
+      "type": "date",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "DENY"
+    },
+    {
+      "accessType": "READ",
+      "principalType": "ROLE",
+      "principalId": "admin",
+      "permission": "ALLOW"
+    }
+  ],
+  "methods": {}
+}

@@ -1,0 +1,21 @@
+{
+  "nome": "Física 1",
+  "ano": 2019,
+  "periodo": 4,
+  "numero": "2A",
+  "metadados": {
+    "professor": "Fulano de Tal"
+  },
+  "alunos": [
+    {
+      "nome": "Cicrano de tal",
+      "matricula": 23423423432,
+      "email": "cicrano@gmail.com"
+    },
+    {
+      "nome": "Beltrano de tal",
+      "matricula": 345623523452,
+      "email": "beltrano@gmail.com"
+    }
+  ]
+}

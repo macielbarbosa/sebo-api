@@ -1,0 +1,28 @@
+{
+  "db": {
+    "name": "db",
+    "connector": "memory",
+    "file": "db.json"
+  },
+  "transient": {
+    "name": "transient",
+    "connector": "transient"
+  },
+  "nfs": {
+    "name": "nfs",
+    "connector": "loopback-component-storage",
+    "provider": "filesystem",
+    "root": "./storage",
+    "nameConflict": "makeUnique"
+  },
+  "multiprovaMongo": {
+    "host": "localhost",
+    "port": 27017,
+    "url": "",
+    "database": "multiprova",
+    "password": "password",
+    "name": "multiprovaMongo",
+    "user": "admin",
+    "connector": "mongodb"
+  }
+}

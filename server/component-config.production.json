@@ -1,0 +1,90 @@
+{
+  "loopback-component-mq": {
+    "path": "loopback-component-mq",
+    "options": {
+      "restPort": 15672,
+      "acls": [
+        {
+          "accessType": "*",
+          "principalType": "ROLE",
+          "principalId": "$everone",
+          "permission": "ALLOW"
+        }
+      ]
+    },
+    "topology": {
+      "connection": {
+        "uri": "amqp://guest:guest@broker-master-container:5672",
+        "timeout": 30000
+      },
+      "exchanges": [
+        {
+          "name": "ex-request-render-pdf",
+          "type": "topic",
+          "persistent": true
+        },
+        {
+          "name": "ex-request-created-instances",
+          "type": "topic",
+          "persistent": true
+        }
+      ],
+      "queues": [
+        {
+          "name": "request-render-pdf",
+          "subscribe": true,
+          "limit": 4
+        },
+        {
+          "name": "response-render-pdf",
+          "subscribe": true,
+          "limit": 4
+        },
+        {
+          "name": "request-created-instances",
+          "subscribe": true,
+          "limit": 4
+        },
+        {
+          "name": "response-created-instances",
+          "subscribe": true,
+          "limit": 4
+        }
+      ],
+      "bindings": [
+        {
+          "exchange": "ex-request-render-pdf",
+          "target": "request-render-pdf",
+          "keys": ["request-render-pdf"]
+        },
+        {
+          "exchange": "ex-request-render-pdf",
+          "target": "response-render-pdf",
+          "keys": ["response-render-pdf"]
+        },
+        {
+          "exchange": "ex-request-created-instances",
+          "target": "request-created-instances",
+          "keys": ["request-created-instances"]
+        },
+        {
+          "exchange": "ex-request-created-instances",
+          "target": "response-created-instances",
+          "keys": ["response-created-instances"]
+        }
+      ],
+      "logging": {
+        "adapters": {
+          "stdOut": {
+            "level": 5,
+            "bailIfDebug": true
+          }
+        }
+      }
+    }
+  },
+  "loopback-component-explorer": {
+    "mountPath": "/explorer",
+    "generateOperationScopedModels": true
+  }
+}

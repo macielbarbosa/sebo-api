@@ -1,0 +1,137 @@
+{
+  "id": "273c67ac-dd31-4678-b121-217353951f22",
+  "dataCadastro": "2019-02-05T12:41:14.245Z",
+  "status": "Pronta para aplicação",
+  "usuarioId": "dccc93c2-41db-4aa8-a415-f4712e9fce10",
+  "candidatoId": "cd6565ad-d520-4e6d-a139-7f17dd906b6c",
+  "tipoAplicacao": "virtual",
+  "virtual": {
+    "dataInicioProva": "2018-11-08T00:56:04.226Z",
+    "dataTerminoProva": "2018-11-08T00:56:04.226Z",
+    "duracaoDaProva": 30
+  },
+  "tipo": "prova",
+  "idMatriz": "9c1c3817-5358-4b98-abf7-593043006136",
+  "prova": {
+    "titulo": "a",
+    "tema": "",
+    "instituicao": "",
+    "tipoEmbaralhamento": 2,
+    "nomeProfessor": "ODocente SobrenomeDocente",
+    "nomeCandidato": "O ALuno",
+    "matricula": "12301923102",
+    "tagIds": [],
+    "grupos": [
+      {
+        "questoes": [
+          {
+            "questaoMatrizId": "a67ba4dc-67fa-4698-aaec-700ec2f4f48g",
+            "numeroNaMatriz": 1,
+            "numeroNaInstancia": 3,
+            "fixa": false,
+            "enunciado": "<p>Associe as colunas</p>",
+            "dificuldade": 2,
+            "tipo": "associacaoDeColunas",
+            "associacaoDeColunas": {
+              "colunaA": [
+                {
+                  "conteudo": "<p>Pronome</p>",
+                  "rotulo": 1
+                },
+                {
+                  "conteudo": "<p>Verbo</p>",
+                  "rotulo": 2
+                }
+              ],
+              "colunaB": [
+                {
+                  "conteudo": "<p>Ele</p>",
+                  "rotulo": 1
+                },
+                {
+                  "conteudo": "<p>Ir</p>",
+                  "rotulo": 2
+                },
+                {
+                  "conteudo": "<p>Ter</p>",
+                  "rotulo": 2
+                },
+                {
+                  "conteudo": "<p>Nós</p>",
+                  "rotulo": 1
+                }
+              ]
+            }
+          },
+          {
+            "questaoMatrizId": "a67ba4dc-67fa-4698-aaec-700ec2f4f48f",
+            "numeroNaMatriz": 1,
+            "numeroNaInstancia": 3,
+            "fixa": false,
+            "enunciado": "<p>Qual a cor do cavalo branco de napoleão bonaparte</p>",
+            "dificuldade": 2,
+            "tipo": "multiplaEscolha",
+            "multiplaEscolha": {
+              "respostaCerta": "d",
+              "alternativas": [
+                { "texto": "<p>Branco</p>", "letraNaInstancia": "a", "letraNaMatriz": "c" },
+                { "texto": "<p>Azul</p>", "letraNaInstancia": "b", "letraNaMatriz": "d" },
+                { "texto": "<p>Preto</p>", "letraNaInstancia": "c", "letraNaMatriz": "b" },
+                { "texto": "<p>Pardo</p>", "letraNaInstancia": "d", "letraNaMatriz": "a" }
+              ],
+              "alternativasPorLinha": 1,
+              "respostaCandidato": "a",
+              "dataRespostaCandidato": "2019-02-05T20:12:20.234Z"
+            }
+          },
+          {
+            "questaoMatrizId": "e8037b71-a605-40b4-b791-d2ecc4f8ab80",
+            "numeroNaMatriz": 2,
+            "numeroNaInstancia": 2,
+            "fixa": false,
+            "enunciado": "Qual a <b>soma</b>  de 2+2?",
+            "dificuldade": 2,
+            "tipo": "vouf",
+            "vouf": {
+              "afirmacoes": [
+                {
+                  "texto": "A soma vale 4",
+                  "letra": "V"
+                },
+                {
+                  "texto": "A soma vale 5",
+                  "letra": "F"
+                },
+                {
+                  "texto": "A soma vale 6",
+                  "letra": "F"
+                }
+              ]
+            }
+          },
+          {
+            "questaoMatrizId": "e8037b71-a605-40b4-b791-d2ecc4f8ab81",
+            "numeroNaMatriz": 2,
+            "numeroNaInstancia": 2,
+            "fixa": false,
+            "enunciado": "Qual a <b>soma</b>  de 2+2?",
+            "dificuldade": 2,
+            "tipo": "discursiva",
+            "discursiva": {
+              "expectativaDeResposta": "A soma é 4",
+              "numeroDeLinhas": 10
+            }
+          }
+        ],
+        "numeroDeQuestoesNoGrupo": 4
+      }
+    ],
+    "dataCadastro": "2019-02-05T12:41:14.215Z",
+    "dataUltimaAlteracao": "2019-02-05T12:41:14.215Z",
+    "usuarioId": "dccc93c2-41db-4aa8-a415-f4712e9fce10",
+    "template": "comperve/prova",
+    "numeroDeQuestoesNaProva": 3
+  },
+  "isDeleted": false,
+  "ocultoLixeira": false
+}

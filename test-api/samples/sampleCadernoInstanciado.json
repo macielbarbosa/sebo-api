@@ -1,0 +1,65 @@
+{
+  "usuarioId": "poiu567t-1234-1234-abcd-e6d8adc131ed",
+  "tipo": "caderno",
+  "idConcurso": "b9b3dc30-957e-4af3-a710-e6d8adc131ed",
+  "versao": "5jbh09-957e-4af3-a710-e6d8adc131ed",
+  "caderno": {
+    "titulo": "Caderno de Ciências Humanas",
+    "duracao": { "hora": 1, "minuto": 10 },
+    "instrucoes": [],
+    "provas": [
+      {
+        "titulo": "Prova de Matemática",
+        "tema": "Integrais duplas",
+        "instituicao": "UFRN",
+        "tipoEmbaralhamento": 2,
+        "nomeProfessor": "Nome do Professor",
+        "dataCadastro": "2018-06-23T18:52:53.085Z",
+        "dataUltimaAlteracao": "2018-06-23T18:52:53.085Z",
+        "numeroDeQuestoesNaProva": 35,
+        "sistemaDeNotasDaProva": "valorEmQuestoes",
+        "grupos": [
+          {
+            "id": "5126bc054aed4daf9e2ab772",
+            "nome": "Nome do grupo",
+            "numeroDeQuestoesNoGrupo": 8,
+            "questoes": [
+              {
+                "id": "5126bc054aed4daf9e2ab772",
+                "numeroNaMatriz": 5,
+                "numeroNaProva": 1,
+                "dataCadastro": "2018-06-23T18:52:53.085Z",
+                "dataUltimaAlteracao": "2018-06-23T18:52:53.085Z",
+                "enunciado": "Qual a <b>soma</b>  de 2+2?",
+                "dificuldade": 2,
+                "tipo": "multiplaEscolha",
+                "multiplaEscolha": {
+                  "respostaCerta": "c",
+                  "respostaCandidato": "b",
+                  "dataRespostaCandidato": "2018-06-23T18:52:53.085Z",
+                  "alternativas": [
+                    {
+                      "texto": "A soma vale 4",
+                      "letra": "a",
+                      "letraNaMatriz": "b"
+                    },
+                    {
+                      "texto": "A soma vale 5",
+                      "letra": "b",
+                      "letraNaMatriz": "c"
+                    },
+                    {
+                      "texto": "A soma vale 6",
+                      "letra": "c",
+                      "letraNaMatriz": "a"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

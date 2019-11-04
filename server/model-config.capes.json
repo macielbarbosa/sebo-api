@@ -1,0 +1,13 @@
+{
+  "_meta": {
+    "sources": ["loopback/common/models", "loopback/server/models", "../common/models", "./models"],
+    "mixins": [
+      "loopback/common/mixins",
+      "loopback/server/mixins",
+      "../node_modules/loopback-component-mq/lib/mixins",
+      "../node_modules/loopback-softdelete",
+      "../common/mixins",
+      "./mixins"
+    ]
+  }
+}

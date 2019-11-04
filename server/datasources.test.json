@@ -1,0 +1,31 @@
+{
+  "db": {
+    "name": "db",
+    "host": "mongodb-dev-container",
+    "port": 27017,
+    "url": "",
+    "database": "multiprova-api-dev-db",
+    "password": "MuLt1pR0V3",
+    "user": "root",
+    "connector": "mongodb"
+  },
+  "transient": {
+    "name": "transient",
+    "connector": "transient"
+  },
+  "nfs": {
+    "name": "nfs",
+    "connector": "loopback-component-storage",
+    "provider": "filesystem",
+    "root": "./storage",
+    "nameConflict": "makeUnique"
+  },
+  "armazenamento": {
+    "name": "armazenamento",
+    "connector": "loopback-component-storage",
+    "provider": "filesystem",
+    "root": "./armazenamento",
+    "nameConflict": "makeUnique",
+    "maxFileSize": "104857600"
+  }
+}

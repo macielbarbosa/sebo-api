@@ -1,0 +1,62 @@
+{
+  "ids": {
+    "AccessToken": 32,
+    "Usuario": 2,
+    "RoleMapping": 6,
+    "Evento": 241,
+    "Tag": 13,
+    "Prova": 7,
+    "Questao": 2,
+    "Impressao": 59,
+    "Caderno": 6,
+    "Concurso": 7,
+    "Instanciamento": 220,
+    "Turma": 1
+  },
+  "models": {
+    "User": {},
+    "AccessToken": {},
+    "ACL": {},
+    "RoleMapping": {
+      "1": "{\"principalType\":\"USER\",\"principalId\":\"2d2f51ff-31d5-4bf3-979e-78cfc4ecb356\",\"roleId\":1,\"deletedAt\":\"2018-11-07T00:11:55.948Z\",\"isDeleted\":false,\"id\":1}",
+      "2": "{\"principalType\":\"USER\",\"principalId\":\"dccc93c2-41db-4aa8-a415-f4712e9fce10\",\"roleId\":2,\"deletedAt\":\"2018-11-07T00:11:55.948Z\",\"isDeleted\":false,\"id\":2}",
+      "3": "{\"principalType\":\"USER\",\"principalId\":\"cd6565ad-d520-4e6d-a139-7f17dd906b6c\",\"roleId\":3,\"deletedAt\":\"2018-11-07T00:11:55.948Z\",\"isDeleted\":false,\"id\":3}",
+      "4": "{\"principalType\":\"USER\",\"principalId\":\"3e68a6da-79f2-4d4c-9730-7da504b2b7f5\",\"roleId\":4,\"deletedAt\":\"2018-11-07T00:11:55.948Z\",\"isDeleted\":false,\"id\":4}",
+      "5": "{\"principalType\":\"USER\",\"principalId\":\"9c930040-ac4d-416c-8eba-508fac47b8da\",\"roleId\":2,\"deletedAt\":\"2018-11-07T00:11:55.948Z\",\"isDeleted\":false,\"id\":5}",
+      "6": "{\"principalType\":\"USER\",\"principalId\":\"1e38f048-9eca-4dd1-b6c4-a0006d19c7e2\",\"roleId\":2,\"id\":6}"
+    },
+    "Role": {
+      "1": "{\"name\":\"admin\",\"created\":\"2018-09-08T17:19:26.894Z\",\"modified\":\"2018-09-08T17:19:26.894Z\",\"deletedAt\":\"2018-11-07T00:11:55.948Z\",\"isDeleted\":false,\"id\":1}",
+      "2": "{\"name\":\"docente\",\"created\":\"2018-09-08T17:19:26.895Z\",\"modified\":\"2018-09-08T17:19:26.895Z\",\"deletedAt\":\"2018-11-07T00:11:55.948Z\",\"isDeleted\":false,\"id\":2}",
+      "3": "{\"name\":\"discente\",\"created\":\"2018-09-08T17:19:26.895Z\",\"modified\":\"2018-09-08T17:19:26.895Z\",\"deletedAt\":\"2018-11-07T00:11:55.948Z\",\"isDeleted\":false,\"id\":3}",
+      "4": "{\"name\":\"super\",\"created\":\"2018-09-08T17:19:26.895Z\",\"modified\":\"2018-09-08T17:19:26.895Z\",\"deletedAt\":\"2018-11-07T00:11:55.948Z\",\"isDeleted\":false,\"id\":4}",
+      "5": "{\"name\":\"gestor\",\"created\":\"2018-09-08T17:19:26.895Z\",\"modified\":\"2018-09-08T17:19:26.895Z\",\"deletedAt\":\"2018-11-07T00:11:55.948Z\",\"isDeleted\":false,\"id\":5}"
+    },
+    "Usuario": {
+      "2d2f51ff-31d5-4bf3-979e-78cfc4ecb356": "{\"id\":\"2d2f51ff-31d5-4bf3-979e-78cfc4ecb356\",\"nome\":\"Admin SobrenomeAdmin\",\"instituicao\":\"UFRN\",\"username\":\"admin\",\"password\":\"$2a$10$C3NMCzkPsYk4yELTVjQusu47oB/YFaPukWv6AlGjO3W3gnS4ao.zS\",\"email\":\"admin@ufrn.br\",\"dataCadastro\":\"2018-09-08T17:19:27.042Z\",\"deletedAt\":\"2018-11-07T00:11:55.948Z\",\"isDeleted\":false,\"dataUltimaAlteracao\":\"2018-09-08T17:19:27.042Z\"}",
+      "dccc93c2-41db-4aa8-a415-f4712e9fce10": "{\"id\":\"dccc93c2-41db-4aa8-a415-f4712e9fce10\",\"nome\":\"ODocente SobrenomeDocente\",\"instituicao\":\"UFRN\",\"username\":\"docente\",\"password\":\"$2a$10$ojj58HJ9bZF.WOcs3W5G/u/h1zifGQ4Ht51XCH/58xlKtqNRhAYQa\",\"email\":\"docente@ufrn.br\",\"dataCadastro\":\"2018-09-08T17:19:27.144Z\",\"deletedAt\":\"2018-11-07T00:11:55.948Z\",\"isDeleted\":false,\"dataUltimaAlteracao\":\"2018-09-08T17:19:27.144Z\"}",
+      "cd6565ad-d520-4e6d-a139-7f17dd906b6c": "{\"id\":\"cd6565ad-d520-4e6d-a139-7f17dd906b6c\",\"nome\":\"IDiscente SobrenomeDiscente\",\"instituicao\":\"UFRN\",\"username\":\"discente\",\"password\":\"$2a$10$xs3b23twGFvJldoBRWNNJOMVSuXZZa6J/CsaNfkGpK/w8wmUud0gy\",\"email\":\"discente@ufrn.br\",\"dataCadastro\":\"2018-09-08T17:19:27.244Z\",\"deletedAt\":\"2018-11-07T00:11:55.948Z\",\"isDeleted\":false,\"dataUltimaAlteracao\":\"2018-09-08T17:19:27.244Z\"}",
+      "3e68a6da-79f2-4d4c-9730-7da504b2b7f5": "{\"id\":\"3e68a6da-79f2-4d4c-9730-7da504b2b7f5\",\"nome\":\"Super Admin\",\"instituicao\":\"UFRN\",\"username\":\"super\",\"password\":\"$2a$10$bokCG9CQWTxhqMb1qnE.HuAU2T8McZCCVBZ/RLCBLHrwdKq0pSsYS\",\"email\":\"super@ufrn.br\",\"dataCadastro\":\"2018-09-08T17:19:27.344Z\",\"deletedAt\":\"2018-11-07T00:11:55.948Z\",\"isDeleted\":false,\"dataUltimaAlteracao\":\"2018-09-08T17:19:27.344Z\"}",
+      "3e68a6da-79f2-4d4c-9730-7da504b2c4f1": "{\"id\":\"3e68a6da-79f2-4d4c-9730-7da504b2c4f1\",\"nome\":\"Gestor\",\"instituicao\":\"UFRN\",\"username\":\"gestor\",\"password\":\"$2a$10$bokCG9CQWTxhqMb1qnE.HuAU2T8McZCCVBZ/RLCBLHrwdKq0pSsYS\",\"email\":\"gestor@ufrn.br\",\"dataCadastro\":\"2018-09-08T17:19:27.344Z\",\"deletedAt\":\"2018-11-07T00:11:55.948Z\",\"isDeleted\":false,\"dataUltimaAlteracao\":\"2018-09-08T17:19:27.344Z\"}",
+      "70e2569a-2fbd-4c3d-ae02-156fc30c6ccf": "{\"id\":\"70e2569a-2fbd-4c3d-ae02-156fc30c6ccf\",\"nome\":\"professor\",\"instituicao\":\"UFRN\",\"username\":\"professor\",\"password\":\"$2a$10$RYMl412hkY6Zk.HNbeRAVOPl9pGpZAOTLIYKgK1fn7U26MCsGhj3a\",\"email\":\"professor@gmail.com\",\"isDeleted\":false,\"dataCadastro\":\"2019-01-26T06:22:33.088Z\",\"dataUltimaAlteracao\":\"2019-01-26T06:22:33.088Z\"}"
+    },
+    "Questao": {},
+    "Prova": {},
+    "Tag": {
+      "f5bcf6cf-dcfb-4078-bb0c-6971d9b4facb": "{\"id\":\"f5bcf6cf-dcfb-4078-bb0c-6971d9b4facb\",\"dataCadastro\":\"2019-02-15T21:02:40.289Z\",\"dataUltimaAlteracao\":\"2019-02-15T21:02:40.289Z\",\"nome\":\"aa\",\"usuarioId\":\"dccc93c2-41db-4aa8-a415-f4712e9fce10\",\"isDeleted\":false}",
+      "4ff3514e-80ad-4531-aa81-b2e8e720d8a6": "{\"id\":\"4ff3514e-80ad-4531-aa81-b2e8e720d8a6\",\"dataCadastro\":\"2019-02-15T21:02:55.912Z\",\"dataUltimaAlteracao\":\"2019-02-15T21:02:55.912Z\",\"nome\":\"c\",\"usuarioId\":\"dccc93c2-41db-4aa8-a415-f4712e9fce10\",\"isDeleted\":false}",
+      "884538be-3a7b-4f68-9c6d-c87a3a089087": "{\"id\":\"884538be-3a7b-4f68-9c6d-c87a3a089087\",\"dataCadastro\":\"2019-02-16T07:03:37.711Z\",\"dataUltimaAlteracao\":\"2019-02-16T07:03:37.711Z\",\"nome\":\"novo\",\"usuarioId\":\"dccc93c2-41db-4aa8-a415-f4712e9fce10\",\"isDeleted\":false}"
+    },
+    "Caderno": {},
+    "Impressao": {},
+    "Evento": {},
+    "Concurso": {},
+    "Instanciamento": {},
+    "InstanciamentoConcursos": {},
+    "Turma": {
+      "8fc27401-331d-4dfb-9fa3-724f4e9cd34a": "{\"id\":\"8fc27401-331d-4dfb-9fa3-724f4e9cd34a\",\"dataCadastro\":\"2019-02-28T00:24:46.006Z\",\"dataUltimaAlteracao\":\"2019-02-28T00:24:46.006Z\",\"nome\":\"Física 1\",\"ano\":2012,\"periodo\":4,\"numero\":\"2A\",\"metadados\":{\"professor\":\"Fulano de Tal\"},\"alunos\":[{\"nome\":\"Cicrano de tal\",\"matricula\":23423423432,\"email\":\"cicrano@gmail.com\",\"usuarioId\":\"75568c28fffc4be30d44d0000ss\"},{\"nome\":\"Beltrano de tal\",\"matricula\":345623523452,\"email\":\"beltrano@gmail.com\",\"usuarioId\":\"34568c28fffc4be30d44d0000ff\"}],\"usuarioId\":\"dccc93c2-41db-4aa8-a415-f4712e9fce10\",\"isDeleted\":false}"
+    },
+    "Notificacao": {},
+    "QuestaoCedida": {}
+  }
+}

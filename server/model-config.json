@@ -1,0 +1,115 @@
+{
+  "_meta": {
+    "sources": ["loopback/common/models", "loopback/server/models", "../common/models", "./models"],
+    "mixins": [
+      "loopback/common/mixins",
+      "loopback/server/mixins",
+      "../node_modules/loopback-component-mq/lib/mixins",
+      "../node_modules/loopback-softdelete",
+      "../common/mixins",
+      "./mixins"
+    ]
+  },
+  "User": {
+    "dataSource": "db",
+    "public": false
+  },
+  "AccessToken": {
+    "dataSource": "db",
+    "public": false
+  },
+  "ACL": {
+    "dataSource": "db",
+    "public": false
+  },
+  "RoleMapping": {
+    "dataSource": "db",
+    "public": false,
+    "options": {
+      "strictObjectIDCoercion": true
+    }
+  },
+  "Role": {
+    "dataSource": "db",
+    "public": false
+  },
+  "Usuario": {
+    "dataSource": "db",
+    "public": true
+  },
+  "Questao": {
+    "dataSource": "db",
+    "public": true
+  },
+  "QuestaoDoConcurso": {
+    "dataSource": "transient",
+    "public": false
+  },
+  "Prova": {
+    "dataSource": "db",
+    "public": true
+  },
+  "ProvaDoConcurso": {
+    "dataSource": "transient",
+    "public": false
+  },
+  "CadernoDoConcurso": {
+    "dataSource": "transient",
+    "public": false
+  },
+  "Instanciamento": {
+    "dataSource": "db",
+    "public": true
+  },
+  "Tag": {
+    "dataSource": "db",
+    "public": true
+  },
+  "Caderno": {
+    "dataSource": "db",
+    "public": true
+  },
+  "Impressao": {
+    "dataSource": "db",
+    "public": true
+  },
+  "Storage": {
+    "dataSource": "nfs",
+    "public": false
+  },
+  "Concurso": {
+    "dataSource": "db",
+    "public": true
+  },
+  "Cargo": {
+    "dataSource": "transient",
+    "public": false
+  },
+  "Evento": {
+    "dataSource": "db",
+    "public": true
+  },
+  "Turma": {
+    "dataSource": "db",
+    "public": true
+  },
+  "InstanciamentoConcursos": {
+    "dataSource": "db",
+    "public": true
+  },
+  "Notificacao": {
+    "dataSource": "db",
+    "public": true
+  },
+  "QuestaoCedida": {
+    "dataSource": "db",
+    "public": true
+  },
+  "Armazenamento": {
+    "dataSource": "armazenamento",
+    "public": true
+  },
+  "Email": {
+    "dataSource": "email"
+  }
+}

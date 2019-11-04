@@ -1,0 +1,430 @@
+{
+  "name": "Prova",
+  "plural": "provas",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "remoting": {
+    "normalizeHttpPath": true
+  },
+  "mixins": {
+    "SoftDelete": true,
+    "Lixeira": true
+  },
+  "scope": {
+    "include": ["questoes", "tags"]
+  },
+  "properties": {
+    "id": {
+      "type": "string",
+      "id": true,
+      "defaultFn": "uuidv4"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "usuario": {
+      "type": "belongsTo",
+      "model": "Usuario",
+      "foreignKey": "usuarioId"
+    },
+    "tags": {
+      "type": "referencesMany",
+      "model": "Tag",
+      "foreignKey": "tagIds",
+      "options": {
+        "validate": true,
+        "forceId": false,
+        "persistent": true
+      }
+    },
+    "questoes": {
+      "type": "referencesMany",
+      "model": "Questao",
+      "foreignKey": "questaoIds",
+      "options": {
+        "validate": true,
+        "forceId": false,
+        "persistent": true
+      }
+    }
+  },
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "DENY"
+    },
+    {
+      "accessType": "READ",
+      "principalType": "ROLE",
+      "principalId": "super",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "WRITE",
+      "principalType": "ROLE",
+      "principalId": "super",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "READ",
+      "principalType": "ROLE",
+      "principalId": "$owner",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "WRITE",
+      "principalType": "ROLE",
+      "principalId": "$owner",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "docente",
+      "permission": "ALLOW",
+      "property": "create"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$owner",
+      "permission": "ALLOW",
+      "property": "imprimirInstancias"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "docente",
+      "permission": "ALLOW",
+      "property": "preview"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$owner",
+      "permission": "ALLOW",
+      "property": "aplicar"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$owner",
+      "permission": "ALLOW",
+      "property": "resumo"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$owner",
+      "permission": "ALLOW",
+      "property": "reverterAplicacao"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$owner",
+      "permission": "ALLOW",
+      "property": "matrixDeCorrecao"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$owner",
+      "permission": "ALLOW",
+      "property": "publicarNotas"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$owner",
+      "permission": "ALLOW",
+      "property": "despublicarNotas"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$owner",
+      "permission": "ALLOW",
+      "property": "vistaDeProva"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$owner",
+      "permission": "ALLOW",
+      "property": "resposta"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$owner",
+      "permission": "ALLOW",
+      "property": "duplicar"
+    }
+  ],
+  "methods": {
+    "duplicar": {
+      "accepts": [
+        {
+          "arg": "id",
+          "type": "string",
+          "http": {
+            "source": "path"
+          }
+        }
+      ],
+      "returns": [
+        {
+          "arg": "prova",
+          "type": "object",
+          "root": true
+        }
+      ],
+      "description": "Duplicar a prova com {id}",
+      "http": {
+        "verb": "post",
+        "path": "/:id/duplicar"
+      }
+    },
+    "preview": {
+      "accepts": [
+        {
+          "arg": "prova",
+          "type": "object"
+        },
+        {
+          "arg": "opcoesInstanciamento",
+          "type": "object"
+        },
+        {
+          "arg": "options",
+          "type": "object",
+          "http": "optionsFromRequest"
+        }
+      ],
+      "returns": [
+        {
+          "arg": "status",
+          "type": "string"
+        },
+        {
+          "arg": "impressaoId",
+          "type": "string"
+        }
+      ],
+      "description": "Envia a prova com {dados} para fila de instanciamento e depois para impressão",
+      "http": {
+        "verb": "post",
+        "path": "/preview"
+      }
+    },
+    "imprimirInstancias": {
+      "accepts": [
+        {
+          "arg": "id",
+          "type": "string"
+        },
+        {
+          "arg": "dados",
+          "type": "object",
+          "http": {
+            "source": "body"
+          }
+        }
+      ],
+      "returns": [
+        {
+          "arg": "status",
+          "type": "string"
+        },
+        {
+          "arg": "impressaoId",
+          "type": "string"
+        },
+        {
+          "arg": "titulo",
+          "type": "string"
+        }
+      ],
+      "description": "Envia instancias da prova com {id} para fila de impressão",
+      "http": {
+        "verb": "post",
+        "path": "/imprimir-instancias/:id"
+      }
+    },
+    "aplicar": {
+      "accepts": [
+        {
+          "arg": "id",
+          "type": "string",
+          "http": {
+            "source": "path"
+          }
+        },
+        {
+          "arg": "dadosAplicacao",
+          "type": "object",
+          "http": {
+            "source": "body"
+          }
+        },
+        {
+          "arg": "options",
+          "type": "object",
+          "http": "optionsFromRequest"
+        }
+      ],
+      "returns": [
+        {
+          "arg": "status",
+          "type": "number"
+        },
+        {
+          "arg": "prova",
+          "type": "object",
+          "http": {
+            "source": "body"
+          }
+        }
+      ],
+      "description": "Aplica a prova com {id}",
+      "http": {
+        "verb": "post",
+        "path": "/aplicar/:id"
+      }
+    },
+    "reverterAplicacao": {
+      "accepts": {
+        "arg": "id",
+        "type": "string"
+      },
+      "returns": [
+        {
+          "arg": "status",
+          "type": "number"
+        },
+        {
+          "arg": "prova",
+          "type": "object",
+          "http": {
+            "source": "body"
+          }
+        }
+      ],
+      "description": "Reverte a aplicação de prova com {id}",
+      "http": {
+        "verb": "post",
+        "path": "/reverter-aplicacao/:id"
+      }
+    },
+    "resumo": {
+      "accepts": {
+        "arg": "id",
+        "type": "string",
+        "http": {
+          "source": "path"
+        }
+      },
+      "returns": {
+        "type": "array",
+        "root": true
+      },
+      "description": "Resumo da prova",
+      "http": {
+        "verb": "get",
+        "path": "/:id/resumo"
+      }
+    },
+    "matrixDeCorrecao": {
+      "accepts": {
+        "arg": "id",
+        "type": "string",
+        "http": {
+          "source": "path"
+        }
+      },
+      "returns": {
+        "type": "array",
+        "root": true
+      },
+      "description": "Matrix de corrrecao",
+      "http": {
+        "verb": "get",
+        "path": "/:id/matrixDeCorrecao"
+      }
+    },
+    "publicarNotas": {
+      "accepts": {
+        "arg": "id",
+        "type": "string",
+        "description": "Id da prova"
+      },
+      "returns": {
+        "arg": "notasPulicadas",
+        "type": "boolean"
+      },
+      "description": "Publicar as notas para os alunos.",
+      "http": {
+        "verb": "post",
+        "path": "/:id/publicarNotas"
+      }
+    },
+    "despublicarNotas": {
+      "accepts": {
+        "arg": "id",
+        "type": "string",
+        "description": "Id da prova"
+      },
+      "returns": {
+        "arg": "notasPulicadas",
+        "type": "boolean"
+      },
+      "description": "Despublicar as notas para os alunos.",
+      "http": {
+        "verb": "post",
+        "path": "/:id/despublicarNotas"
+      }
+    },
+    "vistaDeProva": {
+      "accepts": [
+        { "arg": "id", "type": "string" },
+        { "arg": "vistaProvaHabilitada", "type": "Boolean", "required": true }
+      ],
+      "returns": { "type": "array", "root": true },
+      "description": "Habilita/Desabilita vista de prova aos alunos.",
+      "http": {
+        "verb": "patch",
+        "path": "/:id/vistaDeProva"
+      }
+    },
+    "prototype.resposta": {
+      "accepts": [
+        {
+          "arg": "instancia",
+          "type": "object"
+        },
+        {
+          "arg": "resposta",
+          "type": "object",
+          "http": {
+            "source": "body"
+          }
+        }
+      ],
+      "returns": {
+        "root": true,
+        "type": "object"
+      },
+      "description": "Salvar resposta da prova {id}",
+      "http": {
+        "verb": "put",
+        "path": "/resposta"
+      }
+    }
+  }
+}

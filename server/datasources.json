@@ -1,0 +1,41 @@
+{
+  "db": {
+    "name": "db",
+    "connector": "memory",
+    "file": "db.json"
+  },
+  "transient": {
+    "name": "transient",
+    "connector": "transient"
+  },
+  "nfs": {
+    "name": "nfs",
+    "connector": "loopback-component-storage",
+    "provider": "filesystem",
+    "root": "./storage",
+    "nameConflict": "makeUnique"
+  },
+  "armazenamento": {
+    "name": "armazenamento",
+    "connector": "loopback-component-storage",
+    "provider": "filesystem",
+    "root": "./armazenamento",
+    "nameConflict": "makeUnique",
+    "maxFileSize": "104857600"
+  },
+  "email": {
+    "connector": "mail",
+    "transports": [
+      {
+        "type": "SMTP",
+        "host": "smtp.gmail.com",
+        "secure": true,
+        "port": 465,
+        "auth": {
+          "user": "educaioteste@gmail.com",
+          "pass": "educa!o2019"
+        }
+      }
+    ]
+  }
+}

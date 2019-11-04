@@ -1,0 +1,39 @@
+{
+  "enunciado": "<p></p>",
+  "dificuldade": 2,
+  "tipo": "vouf",
+  "vouf": {
+    "afirmacoes": [
+      {
+        "texto": "A soma vale 4",
+        "letra": "V"
+      },
+      {
+        "texto": "A soma vale 5",
+        "letra": "F"
+      },
+      {
+        "texto": "A soma vale 5",
+        "letra": "F"
+      },
+      {
+        "texto": "A soma vale 6",
+        "letra": "V"
+      },
+      {
+        "texto": "A soma vale 6",
+        "letra": "V"
+      },
+      {
+        "texto": "<p></p>",
+        "letra": "V"
+      }
+    ]
+  },
+  "status": {
+    "id": "el",
+    "texto": "Em elaboração"
+  },
+  "anoEscolar": "Ensino superior: basico",
+  "publico": false
+}

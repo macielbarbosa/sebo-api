@@ -1,0 +1,3 @@
+export {
+  mapearRolesParaPropriedadePermissoes,
+} from './mapearRolesParaPropriedadePermissoes'

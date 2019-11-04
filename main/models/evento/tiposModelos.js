@@ -1,0 +1,7 @@
+export const TIPO_QUESTAO = 'questao'
+export const TIPO_PROVA = 'prova'
+export const TIPO_CADERNO = 'caderno'
+export const TIPO_CONCURSO = 'concurso'
+export const TIPO_USUARIO = 'usuario'
+export const TIPO_TURMA = 'turma'
+export const TIPO_NOTIFICACAO = 'notificacao'

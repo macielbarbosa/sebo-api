@@ -1,0 +1,8 @@
+{
+  "titulo": "Caderno de Ciências Humanas",
+  "descricao": "Caderno exemplo de Ciências Humanas",
+  "provasIds": [],
+  "template": "geral/caderno",
+  "duracao": { "hora": 1, "minuto": 10 },
+  "instrucoes": []
+}

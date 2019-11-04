@@ -1,0 +1,1 @@
+export { usuarioValidarPassword } from './usuarioValidarPassword'

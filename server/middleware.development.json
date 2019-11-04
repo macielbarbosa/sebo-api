@@ -1,0 +1,23 @@
+{
+  "final:after": {
+    "strong-error-handler": {
+      "params": {
+        "debug": true,
+        "log": true
+      }
+    }
+  },
+  "parse": {
+    "body-parser#json": {
+      "params": {
+        "limit": "100mb"
+      }
+    },
+    "body-parser#urlencoded": {
+      "params": {
+        "limit": "100mb",
+        "extended": true
+      }
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "status": "nova",
+  "texto": "Texto da notificação",
+  "rota": { "recurso": "Questão", "operacao": "editar", "id": "10" },
+  "usuarioId": "dccc93c2-41db-4aa8-a415-f4712e9fce10",
+  "dataCadastro": "2019-05-23T23:08:33.780Z",
+  "dataUltimaAlteracao": "2019-05-23T23:08:33.780Z",
+  "isDeleted": false
+}

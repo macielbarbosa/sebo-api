@@ -1,0 +1,15 @@
+{
+  "enunciado": "Qual a <b>soma</b>  de 2+2?",
+  "dificuldade": 2,
+  "tipo": "discursiva",
+  "discursiva": {
+    "expectativaDeResposta": "A soma é 4",
+    "numeroDeLinhas": 10
+  },
+  "status": {
+    "id": "el",
+    "texto": "Em elaboração"
+  },
+  "anoEscolar": "Ensino superior: basico",
+  "publico": false
+}

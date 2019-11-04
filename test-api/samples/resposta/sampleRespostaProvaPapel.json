@@ -1,0 +1,35 @@
+{
+  "idNumero": 2,
+  "respostas": [
+    {
+      "tipo": "associacaoDeColunas",
+      "questaoIndex": 0,
+      "respostaCandidato": ["1", "", "2"]
+    },
+    {
+      "tipo": "multiplaEscolha",
+      "questaoIndex": 1,
+      "respostaCandidato": "b"
+    },
+    {
+      "tipo": "vouf",
+      "questaoIndex": 2,
+      "respostaCandidato": ["V", "", "F", "V"]
+    },
+    {
+      "tipo": "vouf",
+      "questaoIndex": 3,
+      "respostaCandidato": ["V", "", "F", "V", "F"]
+    },
+    {
+      "tipo": "associacaoDeColunas",
+      "questaoIndex": 4,
+      "respostaCandidato": ["5", "3", "2", "4", "1"]
+    },
+    {
+      "tipo": "tipoinvalido",
+      "questaoIndex": 4,
+      "respostaCandidato": ["5", "3", "2", "4", "1"]
+    }
+  ]
+}

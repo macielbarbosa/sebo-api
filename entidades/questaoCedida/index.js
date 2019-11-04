@@ -1,0 +1,1 @@
+export { questaoCedida } from './questaoCedida'

@@ -1,0 +1,8 @@
+export { caderno } from './caderno'
+export { prova } from './prova'
+export { questao } from './questao'
+export { questaoCadida } from './questaoCedida'
+export { tag } from './tag'
+export { concurso } from './concurso'
+export { validar } from './validar'
+export { validarComEnum } from './validarComEnum'

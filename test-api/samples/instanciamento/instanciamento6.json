@@ -1,0 +1,274 @@
+{
+  "_id": "381ac40a-b425-45e5-a0cc-f6cb142edded",
+  "dataCadastro": { "$date": { "$numberLong": "1565915738391" } },
+  "status": "Não iniciada",
+  "tipoAplicacao": "papel",
+  "papel": { "dataAplicacao": "2019-08-15T12:00", "dataTerminoProva": "2019-08-15T23:59" },
+  "tipo": "prova",
+  "idMatriz": "07f8af35-a194-45f6-987b-fe3080aa5bce",
+  "prova": {
+    "titulo": "Prova em papel",
+    "tema": "",
+    "instituicao": "",
+    "tipoEmbaralhamento": { "$numberInt": "2" },
+    "nomeProfessor": "ODocente SobrenomeDocente",
+    "vistaProvaHabilitada": false,
+    "grupos": [
+      {
+        "questoes": [
+          {
+            "questaoMatrizId": "349207c0-45d8-43a6-b579-f2013c2b8ae4",
+            "numeroNaMatriz": { "$numberInt": "4" },
+            "numeroNaInstancia": { "$numberInt": "1" },
+            "enunciado": "<p>O processo de digestão tem etapas distintas e muito importantes. Em cada parte do tubo digestivo o alimento sofre a ação de substâncias com funções diferentes. </p><p></p><p>Enumere a segunda coluna de acordo com a primeira, relacionando cada substância com a parte do tudo digestivo na qual o alimento sofre sua ação.</p>",
+            "tipo": "associacaoDeColunas",
+            "fixa": false,
+            "valor": { "$numberInt": "1" },
+            "associacaoDeColunas": {
+              "colunaA": [
+                {
+                  "conteudo": "<p>Bile</p>",
+                  "rotulo": { "$numberInt": "1" },
+                  "rotuloMatriz": { "$numberInt": "1" },
+                  "posicaoMatriz": { "$numberInt": "0" }
+                },
+                {
+                  "conteudo": "<p>Ptialina</p>",
+                  "rotulo": { "$numberInt": "2" },
+                  "rotuloMatriz": { "$numberInt": "2" },
+                  "posicaoMatriz": { "$numberInt": "1" }
+                },
+                {
+                  "conteudo": "<p>Suco gástrico </p>",
+                  "rotulo": { "$numberInt": "3" },
+                  "rotuloMatriz": { "$numberInt": "3" },
+                  "posicaoMatriz": { "$numberInt": "2" }
+                }
+              ],
+              "colunaB": [
+                {
+                  "conteudo": "<p>Boca</p>",
+                  "rotuloMatriz": { "$numberInt": "1" },
+                  "posicaoMatriz": { "$numberInt": "0" },
+                  "respostaCandidato": null,
+                  "dataRespostaCandidato": null
+                },
+                {
+                  "conteudo": "<p>Intestino delgado</p>",
+                  "rotuloMatriz": { "$numberInt": "3" },
+                  "posicaoMatriz": { "$numberInt": "2" },
+                  "respostaCandidato": null,
+                  "dataRespostaCandidato": null
+                },
+                {
+                  "conteudo": "<p>Estômago</p>",
+                  "rotuloMatriz": { "$numberInt": "2" },
+                  "posicaoMatriz": { "$numberInt": "1" },
+                  "respostaCandidato": null,
+                  "dataRespostaCandidato": null
+                }
+              ]
+            }
+          },
+          {
+            "questaoMatrizId": "de8c7e4b-63b6-4c8e-a7d4-e867c9be3f80",
+            "fixa": false,
+            "valor": { "$numberInt": "1" },
+            "enunciado": "<p>Um agricultor, preocupado com o baixo desempenho de sua plantação de mandioca, resolve investir em um melhoramento genético de suas plantas para a obtenção de uma linhagem altamente produtiva. Qual o tipo de reprodução deverá ser escolhido pelo agricultor para a obtenção da variedade de mandioca adequada?</p>",
+            "tipo": "multiplaEscolha",
+            "multiplaEscolha": {
+              "respostaCerta": "c",
+              "alternativas": [
+                { "texto": "<p>Gemulação</p>", "letraNaInstancia": "a", "letraNaMatriz": "d" },
+                { "texto": "<p>Enxertia</p>", "letraNaInstancia": "b", "letraNaMatriz": "b" },
+                { "texto": "<p>Brotamento</p>", "letraNaInstancia": "c", "letraNaMatriz": "a" },
+                { "texto": "<p>Gâmica</p>", "letraNaInstancia": "d", "letraNaMatriz": "c" }
+              ],
+              "alternativasPorLinha": { "$numberInt": "1" },
+              "respostaCandidato": null,
+              "dataRespostaCandidato": null
+            },
+            "numeroNaMatriz": { "$numberInt": "3" },
+            "numeroNaInstancia": { "$numberInt": "2" }
+          },
+          {
+            "questaoMatrizId": "ff036b03-de2d-4fe8-ad47-6f47d8ee71aa",
+            "numeroNaMatriz": { "$numberInt": "2" },
+            "numeroNaInstancia": { "$numberInt": "3" },
+            "enunciado": "<p>Associe as duas colunas, relacionando as teorias administrativas, que formam a base da teoria da administração, aos respectivos enfoques principais pertinentes. A seguir, assinale a alternativa que apresenta a sequência correta.</p>",
+            "tipo": "associacaoDeColunas",
+            "fixa": false,
+            "valor": { "$numberInt": "1" },
+            "associacaoDeColunas": {
+              "colunaA": [
+                {
+                  "conteudo": "<p>Teoria Contingencial</p>",
+                  "rotulo": { "$numberInt": "1" },
+                  "rotuloMatriz": { "$numberInt": "5" },
+                  "posicaoMatriz": { "$numberInt": "4" }
+                },
+                {
+                  "conteudo": "<p>Administração Cientifica</p>",
+                  "rotulo": { "$numberInt": "2" },
+                  "rotuloMatriz": { "$numberInt": "1" },
+                  "posicaoMatriz": { "$numberInt": "0" }
+                },
+                {
+                  "conteudo": "<p>Teoria Clássica</p>",
+                  "rotulo": { "$numberInt": "3" },
+                  "rotuloMatriz": { "$numberInt": "2" },
+                  "posicaoMatriz": { "$numberInt": "1" }
+                },
+                {
+                  "conteudo": "<p>Teoria das Relações Humanas</p>",
+                  "rotulo": { "$numberInt": "4" },
+                  "rotuloMatriz": { "$numberInt": "3" },
+                  "posicaoMatriz": { "$numberInt": "2" }
+                },
+                {
+                  "conteudo": "<p>Teoria de Sistemas</p>",
+                  "rotulo": { "$numberInt": "5" },
+                  "rotuloMatriz": { "$numberInt": "4" },
+                  "posicaoMatriz": { "$numberInt": "3" }
+                }
+              ],
+              "colunaB": [
+                {
+                  "conteudo": "<p>tarefas</p>",
+                  "rotuloMatriz": { "$numberInt": "3" },
+                  "posicaoMatriz": { "$numberInt": "2" },
+                  "respostaCandidato": null,
+                  "dataRespostaCandidato": null
+                },
+                {
+                  "conteudo": "<p>tecnologia</p>",
+                  "rotuloMatriz": { "$numberInt": "1" },
+                  "posicaoMatriz": { "$numberInt": "0" },
+                  "respostaCandidato": null,
+                  "dataRespostaCandidato": null
+                },
+                {
+                  "conteudo": "<p>estrutura</p>",
+                  "rotuloMatriz": { "$numberInt": "1" },
+                  "posicaoMatriz": { "$numberInt": "4" },
+                  "respostaCandidato": null,
+                  "dataRespostaCandidato": null
+                },
+                {
+                  "conteudo": "<p>pessoas</p>",
+                  "rotuloMatriz": { "$numberInt": "2" },
+                  "posicaoMatriz": { "$numberInt": "3" },
+                  "respostaCandidato": null,
+                  "dataRespostaCandidato": null
+                },
+                {
+                  "conteudo": "<p>ambiente</p>",
+                  "rotuloMatriz": { "$numberInt": "4" },
+                  "posicaoMatriz": { "$numberInt": "1" },
+                  "respostaCandidato": null,
+                  "dataRespostaCandidato": null
+                }
+              ]
+            }
+          },
+          {
+            "questaoMatrizId": "2ac08ca2-7281-41a9-addb-22f630fe38ef",
+            "numeroNaMatriz": { "$numberInt": "1" },
+            "numeroNaInstancia": { "$numberInt": "4" },
+            "fixa": false,
+            "valor": { "$numberInt": "1" },
+            "enunciado": "<p>[UFSM 2014] Pode ser estranho para nossa espécie, que tanto orgulho sente de sua capacidade de criar e lidar com as novas tecnologias a seu favor, parar para pensar que, de certa forma, ainda temos semelhanças incontestáveis com as plantas angiospermas! Com relação a esse fato, avalie as alternativas a seguir e coloque verdadeira (V) ou falsa (F).</p>",
+            "tipo": "vouf",
+            "vouf": {
+              "afirmacoes": [
+                {
+                  "texto": "<p>têm corpos pluricelulares organizados em tecidos e órgãos.</p>",
+                  "posicaoNaMatriz": { "$numberInt": "0" },
+                  "letra": "V",
+                  "respostaCandidato": null,
+                  "dataRespostaCandidato": null
+                },
+                {
+                  "texto": "<p>compartilham o mesmo tipo de nutrição.</p>",
+                  "posicaoNaMatriz": { "$numberInt": "1" },
+                  "letra": "F",
+                  "respostaCandidato": null,
+                  "dataRespostaCandidato": null
+                },
+                {
+                  "texto": "<p>formam gametas masculinos e femininos.</p>",
+                  "posicaoNaMatriz": { "$numberInt": "3" },
+                  "letra": "F",
+                  "respostaCandidato": null,
+                  "dataRespostaCandidato": null
+                },
+                {
+                  "texto": "<p>reproduzem-se de forma sexuada e assexuada.</p>",
+                  "posicaoNaMatriz": { "$numberInt": "2" },
+                  "letra": "V",
+                  "respostaCandidato": null,
+                  "dataRespostaCandidato": null
+                }
+              ]
+            }
+          },
+          {
+            "questaoMatrizId": "ef363329-cd8e-4e53-9a67-9f9988a9bfb9",
+            "numeroNaMatriz": { "$numberInt": "5" },
+            "numeroNaInstancia": { "$numberInt": "5" },
+            "fixa": false,
+            "valor": { "$numberInt": "1" },
+            "enunciado": "<p>[UEL 2014] No século XX, devido às crises, houve o questionamento da racionalidade econômica e das tecnologias dominantes diante do uso desenfreado dos recursos naturais, exigindo, com isso, mudanças de atitude frente aos cuidados com o meio ambiente. Em relação às atuais políticas públicas ambientais no Brasil, atribua V (verdadeiro) ou F (falso) às afirmativas a seguir.</p>",
+            "tipo": "vouf",
+            "vouf": {
+              "afirmacoes": [
+                {
+                  "texto": "<p>Apesar de pautada na década de 1980, a problemática ambiental urbana ganhou visibilidade na década de 1990, impulsionada pelos fóruns internacionais.</p>",
+                  "posicaoNaMatriz": { "$numberInt": "4" },
+                  "letra": "V",
+                  "respostaCandidato": null,
+                  "dataRespostaCandidato": null
+                },
+                {
+                  "texto": "<p>A Agenda Habitat contribuiu para a elaboração da Agenda 21 Brasileira, especialmente no que tange ao eixo temático denominado Cidades Sustentáveis, com o intuito de melhorar as condições dos assentamentos humanos.</p>",
+                  "posicaoNaMatriz": { "$numberInt": "2" },
+                  "letra": "F",
+                  "respostaCandidato": null,
+                  "dataRespostaCandidato": null
+                },
+                {
+                  "texto": "<p>A Agenda Marrom, criada em 1970, ganhou importância efetiva e foi elaborada com o intuito de atender, de maneira pioneira, à  conservação da vegetação ripária nas zonas rurais.</p>",
+                  "posicaoNaMatriz": { "$numberInt": "0" },
+                  "letra": "V",
+                  "respostaCandidato": null,
+                  "dataRespostaCandidato": null
+                },
+                {
+                  "texto": "<p>A erradicação da pobreza e a resolução do problema habitacional são requisitos para a promoção do desenvolvimento sustentável nas grandes cidades.</p>",
+                  "posicaoNaMatriz": { "$numberInt": "3" },
+                  "letra": "F",
+                  "respostaCandidato": null,
+                  "dataRespostaCandidato": null
+                },
+                {
+                  "texto": "<p>A Agenda Verde é responsável pela formulação e gestão dos recursos hídricos decorrentes de atividades poluidoras, como a realização de estudos e pesquisas sobre poluição, qualidade do ar, da água e do solo.</p>",
+                  "posicaoNaMatriz": { "$numberInt": "1" },
+                  "letra": "F",
+                  "respostaCandidato": null,
+                  "dataRespostaCandidato": null
+                }
+              ]
+            }
+          }
+        ],
+        "nome": "",
+        "id": "8469e9b9-439d-4427-a7e8-18eb7baabf2c",
+        "numeroDeQuestoesNoGrupo": { "$numberInt": "5" }
+      }
+    ],
+    "numeroDeQuestoesNaProva": { "$numberInt": "5" },
+    "valor": { "$numberInt": "5" }
+  },
+  "usuarioId": "ef51d75f-2ecc-4a14-b6c7-d745ce22d193",
+  "isDeleted": false
+}

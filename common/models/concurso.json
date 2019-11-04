@@ -1,0 +1,582 @@
+{
+  "name": "Concurso",
+  "plural": "concursos",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "remoting": {
+    "normalizeHttpPath": true
+  },
+  "mixins": {
+    "SoftDelete": true
+  },
+  "properties": {
+    "id": {
+      "type": "string",
+      "id": true,
+      "defaultFn": "uuidv4"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "usuario": {
+      "type": "belongsTo",
+      "model": "Usuario",
+      "foreignKey": "usuarioId"
+    },
+    "questoesList": {
+      "type": "embedsMany",
+      "model": "QuestaoDoConcurso",
+      "property": "questoes"
+    },
+    "provasList": {
+      "type": "embedsMany",
+      "model": "ProvaDoConcurso",
+      "property": "provas"
+    },
+    "cadernosList": {
+      "type": "embedsMany",
+      "model": "CadernoDoConcurso",
+      "property": "cadernos"
+    },
+    "cargosList": {
+      "type": "embedsMany",
+      "model": "Cargo",
+      "property": "cargos"
+    }
+  },
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "DENY"
+    },
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "super",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "READ",
+      "principalType": "ROLE",
+      "principalId": "$owner",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "WRITE",
+      "principalType": "ROLE",
+      "principalId": "$owner",
+      "permission": "ALLOW"
+    }
+  ],
+  "methods": {
+    "prototype.instanciar": {
+      "accepts": [
+        {
+          "arg": "instancia",
+          "type": "object"
+        },
+        {
+          "arg": "cadernoId",
+          "type": "string"
+        }
+      ],
+      "returns": [
+        {
+          "arg": "versao",
+          "type": "string"
+        },
+        {
+          "arg": "concurso",
+          "type": "object"
+        },
+        {
+          "arg": "caderno",
+          "type": "object"
+        },
+        {
+          "arg": "versoesCaderno",
+          "type": "array"
+        }
+      ],
+      "description": "Instancia o caderno {cadernoId} do concurso.",
+      "http": {
+        "verb": "get",
+        "path": "/:cadernoId/gerar-instanciamento"
+      }
+    },
+    "prototype.cancelarInstanciamento": {
+      "accepts": [
+        {
+          "arg": "instancia",
+          "type": "object"
+        },
+        {
+          "arg": "cadernoId",
+          "type": "string"
+        },
+        {
+          "arg": "versao",
+          "type": "string"
+        }
+      ],
+      "returns": [
+        {
+          "arg": "mudouStatus",
+          "type": "boolean"
+        },
+        {
+          "arg": "concurso",
+          "type": "object"
+        }
+      ],
+      "description": "Modifica o status do instanciamento de {cadernoId} com {versao} para cancelado.",
+      "http": {
+        "verb": "get",
+        "path": "/:cadernoId/cancelar-instanciamento/:versao"
+      }
+    },
+    "prototype.excluirInstanciamento": {
+      "accepts": [
+        {
+          "arg": "instancia",
+          "type": "object"
+        },
+        {
+          "arg": "cadernoId",
+          "type": "string"
+        },
+        {
+          "arg": "versao",
+          "type": "string"
+        }
+      ],
+      "returns": [
+        {
+          "arg": "mudouStatus",
+          "type": "boolean"
+        },
+        {
+          "arg": "numeroDeInstanciamentosExcluidos",
+          "type": "number"
+        },
+        {
+          "arg": "concurso",
+          "type": "object"
+        }
+      ],
+      "description": "Excluir instâncias com uma {versao} específica do caderno e modifica o status do instanciamento da {versao} para cancelado.",
+      "http": {
+        "verb": "get",
+        "path": "/:cadernoId/excluir-instanciamento/:versao"
+      }
+    },
+    "previewCapa": {
+      "accepts": [
+        {
+          "arg": "capa",
+          "type": "object",
+          "http": {
+            "source": "body"
+          }
+        },
+        {
+          "arg": "options",
+          "type": "object",
+          "http": "optionsFromRequest"
+        }
+      ],
+      "returns": {
+        "arg": "impressao",
+        "type": "object"
+      },
+      "description": "Gera uma impressão de uma capa de caderno.",
+      "http": {
+        "verb": "post",
+        "path": "/preview-capa"
+      }
+    },
+    "gerarImpressaoDeQuestaoInstanciada": {
+      "accepts": [
+        {
+          "arg": "versaoCadernoId",
+          "type": "string"
+        },
+        {
+          "arg": "numeroDaQuestao",
+          "type": "number"
+        },
+        {
+          "arg": "options",
+          "type": "object",
+          "http": "optionsFromRequest"
+        }
+      ],
+      "returns": {
+        "arg": "impressao",
+        "type": "object"
+      },
+      "description": "Gera a impressão de uma questão instanciada para ajudar com o processo de recurso.",
+      "http": {
+        "verb": "post",
+        "path": "/gerar-impressao-questao"
+      }
+    },
+    "prototype.alterarCargo": {
+      "accepts": [
+        {
+          "arg": "cargoId",
+          "type": "string"
+        },
+        {
+          "arg": "cargo",
+          "type": "object",
+          "http": {
+            "source": "body"
+          }
+        },
+        {
+          "arg": "instancia",
+          "type": "object"
+        }
+      ],
+      "returns": [
+        {
+          "arg": "cargo",
+          "type": "object"
+        }
+      ],
+      "description": "Altera o {cargoId}",
+      "http": {
+        "verb": "patch",
+        "path": "/cargos-list/:cargoId"
+      }
+    },
+    "prototype.excluirCargo": {
+      "accepts": [
+        {
+          "arg": "cargoId",
+          "type": "string"
+        },
+        {
+          "arg": "instancia",
+          "type": "object"
+        }
+      ],
+      "description": "Exclui o {cargoId}",
+      "http": {
+        "verb": "del",
+        "path": "/cargos-list/:cargoId"
+      }
+    },
+    "prototype.criarEtapa": {
+      "accepts": [
+        {
+          "arg": "etapa",
+          "type": "object",
+          "http": {
+            "source": "body"
+          }
+        },
+        {
+          "arg": "cargoId",
+          "type": "string"
+        },
+        {
+          "arg": "instancia",
+          "type": "object"
+        }
+      ],
+      "returns": [
+        {
+          "arg": "etapa",
+          "type": "object"
+        }
+      ],
+      "description": "Criar a etapa no {cargoId}",
+      "http": {
+        "verb": "post",
+        "path": "/cargos-list/:cargoId/etapas"
+      }
+    },
+    "prototype.excluirEtapa": {
+      "accepts": [
+        {
+          "arg": "etapaId",
+          "type": "string"
+        },
+        {
+          "arg": "cargoId",
+          "type": "string"
+        },
+        {
+          "arg": "instancia",
+          "type": "object"
+        }
+      ],
+      "description": "Exclui a {etapaId} do {cargoId}",
+      "http": {
+        "verb": "del",
+        "path": "/cargos-list/:cargoId/etapas/:etapaId"
+      }
+    },
+    "prototype.alterarEtapa": {
+      "accepts": [
+        {
+          "arg": "etapaId",
+          "type": "string"
+        },
+        {
+          "arg": "cargoId",
+          "type": "string"
+        },
+        {
+          "arg": "etapa",
+          "type": "object",
+          "http": {
+            "source": "body"
+          }
+        },
+        {
+          "arg": "instancia",
+          "type": "object"
+        }
+      ],
+      "returns": [
+        {
+          "arg": "etapa",
+          "type": "object"
+        }
+      ],
+      "description": "Altera a {etapaId} do {cargoId}",
+      "http": {
+        "verb": "patch",
+        "path": "/cargos-list/:cargoId/etapas/:etapaId"
+      }
+    },
+    "prototype.criarCaderno": {
+      "accepts": [
+        {
+          "arg": "caderno",
+          "type": "object",
+          "http": {
+            "source": "body"
+          }
+        },
+        {
+          "arg": "cargoId",
+          "type": "string"
+        },
+        {
+          "arg": "etapaId",
+          "type": "string"
+        },
+        {
+          "arg": "instancia",
+          "type": "object"
+        }
+      ],
+      "returns": [
+        {
+          "arg": "caderno",
+          "type": "object"
+        }
+      ],
+      "description": "Adiciona caderno na {etapaId} do {cargoId}",
+      "http": {
+        "verb": "post",
+        "path": "/cargos-list/:cargoId/etapas/:etapaId/cadernos"
+      }
+    },
+    "prototype.alterarCaderno": {
+      "accepts": [
+        {
+          "arg": "caderno",
+          "type": "object",
+          "http": {
+            "source": "body"
+          }
+        },
+        {
+          "arg": "cadernoId",
+          "type": "string"
+        },
+        {
+          "arg": "instancia",
+          "type": "object"
+        }
+      ],
+      "returns": [
+        {
+          "arg": "caderno",
+          "type": "object"
+        }
+      ],
+      "description": "Altera o {cadernoId}",
+      "http": {
+        "verb": "patch",
+        "path": "/cadernos-list/:cadernoId"
+      }
+    },
+    "prototype.excluirCaderno": {
+      "accepts": [
+        {
+          "arg": "cadernoId",
+          "type": "string"
+        },
+        {
+          "arg": "cargoId",
+          "type": "string"
+        },
+        {
+          "arg": "etapaId",
+          "type": "string"
+        },
+        {
+          "arg": "instancia",
+          "type": "object"
+        }
+      ],
+      "description": "Exclui o caderno da {etapaId} do {cargoId}",
+      "http": {
+        "verb": "del",
+        "path": "/cargos-list/:cargoId/etapas/:etapaId/cadernos/:cadernoId"
+      }
+    },
+    "prototype.isQuestaoAssociada": {
+      "accepts": [
+        {
+          "arg": "questaoId",
+          "type": "string"
+        },
+        {
+          "arg": "instancia",
+          "type": "object"
+        }
+      ],
+      "returns": {
+        "root": true,
+        "type": "Boolean"
+      },
+      "description": "Verifica se a {questaoId} está associada a alguma prova do concurso",
+      "http": {
+        "verb": "get",
+        "path": "/questoes-list/:questaoId/is-associada"
+      }
+    },
+    "prototype.isProvaAssociada": {
+      "accepts": [
+        {
+          "arg": "provaId",
+          "type": "string"
+        },
+        {
+          "arg": "instancia",
+          "type": "object"
+        }
+      ],
+      "returns": {
+        "root": true,
+        "type": "Boolean"
+      },
+      "description": "Verifica se a {provaId} está associada a algum caderno do concurso",
+      "http": {
+        "verb": "get",
+        "path": "/provas-list/:provaId/is-associada"
+      }
+    },
+    "prototype.asssociarProvaAoCadernoDoConcurso": {
+      "accepts": [
+        {
+          "arg": "provaId",
+          "type": "string"
+        },
+        {
+          "arg": "cadernoId",
+          "type": "string"
+        },
+        {
+          "arg": "instancia",
+          "type": "object"
+        }
+      ],
+      "returns": [
+        {
+          "arg": "caderno",
+          "type": "object"
+        },
+        {
+          "arg": "concurso",
+          "type": "object"
+        },
+        {
+          "arg": "jaEstavaAssociada",
+          "type": "object"
+        }
+      ],
+      "description": "Associa {provaId} ao caderno {cadernoId}",
+      "http": {
+        "verb": "patch",
+        "path": "/associar-prova-ao-caderno"
+      }
+    },
+    "prototype.desasssociarProvaAoCadernoDoConcurso": {
+      "accepts": [
+        {
+          "arg": "provaId",
+          "type": "string"
+        },
+        {
+          "arg": "cadernoId",
+          "type": "string"
+        },
+        {
+          "arg": "instancia",
+          "type": "object"
+        }
+      ],
+      "returns": [
+        {
+          "arg": "caderno",
+          "type": "object"
+        },
+        {
+          "arg": "concurso",
+          "type": "object"
+        },
+        {
+          "arg": "jaEstavaDesassociada",
+          "type": "object"
+        }
+      ],
+      "description": "Associa {provaId} ao caderno {cadernoId}",
+      "http": {
+        "verb": "patch",
+        "path": "/desassociar-prova-ao-caderno"
+      }
+    },
+    "prototype.exportarImagensQuestoes": {
+      "accepts": [
+        {
+          "arg": "instancia",
+          "type": "object"
+        }
+      ],
+      "returns": [
+        {
+          "arg": "exportacaoQuestoes",
+          "type": "object"
+        }
+      ],
+      "description": "Exporta as imagens das questões do concurso",
+      "http": {
+        "verb": "post",
+        "path": "/imagens-questoes"
+      }
+    }
+  }
+}
